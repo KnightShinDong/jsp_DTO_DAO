@@ -39,7 +39,7 @@ public class MemberDAO {
 
         try {
            connection = DriverManager.getConnection(url,uid,upw);
-//            connection = dataSource.getConnection();
+//            connection = dataSource.getConnection(); 커넥션풀
             pstmt = connection.prepareStatement("SELECT * FROM ttest");
             resultSet = pstmt.executeQuery();
 
