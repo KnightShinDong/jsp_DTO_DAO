@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="jsp_DBCP:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/jsp_DBCP_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="jsp_DBCP/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>
