@@ -1,7 +1,12 @@
 package com.sdh.ex;
 
-import java.lang.reflect.Array;
-import java.sql.*;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class MemberDAO {
@@ -9,8 +14,17 @@ public class MemberDAO {
     private String uid = "root";
     private String upw = "1234";
 
+      private DataSource dataSource;
+
     public MemberDAO() {
         try {
+            Class.forName("org.mariadb.jdbc.Driver");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try {
+ //           Context context = new InitialContext();
+//            dataSource  = (DataSource)context.lookup("java:comp/env/jdbc/mariaDB");
             Class.forName("org.mariadb.jdbc.Driver");
         }catch (Exception e){
             e.printStackTrace();
@@ -24,7 +38,8 @@ public class MemberDAO {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection(url,uid,upw);
+           connection = DriverManager.getConnection(url,uid,upw);
+//            connection = dataSource.getConnection();
             pstmt = connection.prepareStatement("SELECT * FROM ttest");
             resultSet = pstmt.executeQuery();
 
